@@ -62,5 +62,23 @@ namespace IMS.Models
         /// </summary>
         [Content("新增失败，已存在一个相同的书本编号。")]
         public const int DEMO_BOOK_FOR_ADD_NO_EXISTS = 510008;
+
+        /// <summary>
+        /// 修改失败，找不到可修改的书本。
+        /// </summary>
+        [Content("修改失败，找不到可修改的书本。")]
+        public const int DEMO_BOOK_FOR_EDIT_NOT_FOUND = 510009;
+
+        /// <summary>
+        /// 修改失败，已存在一个相同的书名称。
+        /// </summary>
+        [Content("修改失败，已存在一个相同的书名称。")]
+        public const int DEMO_BOOK_FOR_EDIT_NAME_EXISTS = 510010;
+
+        /// <summary>
+        /// 修改失败，已存在一个相同的书本编号。
+        /// </summary>
+        [Content("修改失败，已存在一个相同的书本编号。")]
+        public const int DEMO_BOOK_FOR_EDIT_NO_EXISTS = 510011;
     }
 }

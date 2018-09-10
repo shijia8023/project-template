@@ -74,7 +74,60 @@ namespace IMS.Domain.Services
         /// <returns></returns>
         public bool EditBook(Book book)
         {
+            var getBook = _bookRepository.Get(book.BookId);
+            if (!EditBookEnabled(getBook))
+            {
+                return false;
+            }
 
+            //修改的内容字段
+            getBook.BookName = book.BookName;
+            getBook.BookNameType = book.BookNameType;
+            getBook.BookNo = book.BookNo;
+            getBook.Author = book.Author;
+            getBook.Enabled = book.Enabled;
+            getBook.PublishDate = book.PublishDate;
+            getBook.Publishers = book.Publishers;
+
+            //更新信息
+            _bookRepository.Update(getBook);
+            _unitOfWork.Commit();
+            return true;
         }
+
+        /// <summary>
+		/// 判断书本信息是否可以修改
+		/// 作者：sj
+		/// 日期：2018-09-10
+		/// </summary>
+		/// <param name="book">书本</param>
+		/// <returns></returns>
+		private bool EditBookEnabled(Book book)
+        {
+            if (book == null)
+            {
+                this.Message = new Message(MsgCode.DEMO_BOOK_FOR_EDIT_NOT_FOUND, "修改失败，找不到可修改的书本。");
+                return false;
+            }
+            if (_bookRepository.Table.Any(x => x.IsDelete == false  && x.BookName == book.BookName && x.BookId != book.BookId))
+            {
+                this.Message = new Message(MsgCode.DEMO_BOOK_FOR_EDIT_NAME_EXISTS, "修改失败，已存在一个相同的书名称。");
+                return false;
+            }
+            if (_bookRepository.Table.Any(x => x.IsDelete == false && x.BookNo == book.BookNo && x.BookId != book.BookId))
+            {
+                this.Message = new Message(MsgCode.DEMO_BOOK_FOR_EDIT_NO_EXISTS, "修改失败，已存在一个相同的书本编号。");
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 移除书本信息
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        public bool RemoverBook(Book book) { }
+
     }
 }

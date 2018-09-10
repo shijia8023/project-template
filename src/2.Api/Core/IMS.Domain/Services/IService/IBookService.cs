@@ -27,5 +27,12 @@ namespace IMS.Services
        /// <param name="book"></param>
        /// <returns></returns>
         bool EditBook(Book book);
+
+        /// <summary>
+        /// 移除书本信息 
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        bool RemoverBook(Book book);
     }
 }

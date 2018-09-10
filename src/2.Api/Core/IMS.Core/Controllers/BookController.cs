@@ -17,7 +17,7 @@ namespace IMS.Core.Controllers
     /// 书控制器   sj 2018-09-10 10:45
     /// </summary>
     [RoutePrefix("api/ims/book")]
-    public class BookController:DefaultApiController
+    public class BookController : DefaultApiController
     {
         private readonly IBookService _bookService;
 
@@ -65,6 +65,41 @@ namespace IMS.Core.Controllers
             }
             //记录操作成功日志
             Logger.Information(Request, "新增书本信息成功。", JsonConvert.SerializeObject(bookModel));
+            return result;
+        }
+
+        /// <summary>
+        /// 修改书本信息
+        /// </summary>
+        /// <param name="bookModel"></param>
+        /// <returns></returns>
+        [HttpPut, Route("")]
+        [ValidateModelFilter]
+        [ModuleAuthorize]
+        public ResponseResult EnditBook(BookEditViewModel bookModel)
+        {
+            var result = new ResponseResult(PromptCode.SUCCESS, "修改书本信息成功。");
+            var book = new Book()
+            {
+                BookId = bookModel.BookId,
+                BookName = bookModel.BookName,
+                BookNo = bookModel.BookNo,
+                BookNameType = bookModel.BookTypeName,
+                Author = bookModel.Author,
+                Publishers = bookModel.Publishers,
+                PublishDate = bookModel.PublishDate,
+                Enabled = bookModel.Enabled,
+                lastEditDate = DateTime.Now
+            };
+
+            if (!_bookService.EditBook(book))
+            {
+                result.Code = _bookService.Message.Code;
+                result.Message = _bookService.Message.Content;
+                return result;
+            }
+            //记录操作成功日志
+            Logger.Information(Request, "修改书本信息成功。", JsonConvert.SerializeObject(bookModel));
             return result;
         }
     }
