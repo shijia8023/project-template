@@ -84,14 +84,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookRepository.cs" />
     <Compile Include="ContacterRepository.cs" />
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="IMSDbContext.cs" />
     <Compile Include="IMSDbContextFactory.cs" />
     <Compile Include="IMSDbInitializer.cs" />
     <Compile Include="IMSRepositoryModule.cs" />
+    <Compile Include="Mapping\BookMap.cs" />
     <Compile Include="Mapping\ContacterMap.cs" />
     <Compile Include="Mapping\CustomerMap.cs" />
+    <Compile Include="Mapping\OwnSupplierMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

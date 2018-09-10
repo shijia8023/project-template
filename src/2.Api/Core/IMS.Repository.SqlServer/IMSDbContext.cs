@@ -26,6 +26,7 @@ namespace IMS.Repository.SqlServer
         {
 			modelBuilder.Configurations.Add(new CustomerMap());
 			modelBuilder.Configurations.Add(new ContacterMap());
+            modelBuilder.Configurations.Add(new BookMap());
             base.OnModelCreating(modelBuilder);
         }
     }

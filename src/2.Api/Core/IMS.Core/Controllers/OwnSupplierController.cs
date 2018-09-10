@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace IMS.Core.Controllers
 {
-   public class OwnSupplierController
+    /// <summary>
+    /// 供应商控制器
+    /// </summary>
+   public class OwnSupplierController:DefaultApiController
     {
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public OwnSupplierController() { }
     }
 }

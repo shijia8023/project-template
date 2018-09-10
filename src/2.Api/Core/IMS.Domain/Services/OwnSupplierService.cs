@@ -1,4 +1,6 @@
-﻿using IMS.Domain.Services.IService;
+﻿
+using IMS.Models;
+using IMS.Services;
 using Sapi.Services;
 using System;
 using System.Collections.Generic;
@@ -15,5 +17,13 @@ namespace IMS.Domain.Services
    public  class OwnSupplierService : ServiceBase, IOwnSupplierService
     {
 
+
+      
+        //public OwnSupplierService() { }
+
+        //public bool AddOwnSupplier(OwnSupplier ownSupplier)
+        //{
+
+        //}
     }
 }

@@ -1,19 +1,17 @@
 ﻿using IMS.Models;
-using Sapi.Services;
+using Sapi.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMS.Services
+namespace IMS.Repositories
 {
     /// <summary>
-    /// 供应商
+    /// 书 仓储模式
     /// </summary>
-   public  interface IOwnSupplierService: IBusinessService
+    public interface IBookRepository:IRepository<Book>
     {
-        
-        //bool AddOwnSupplier(OwnSupplier ownSupplier);
     }
 }
